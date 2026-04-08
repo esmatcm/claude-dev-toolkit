@@ -1,12 +1,12 @@
 ---
 name: setup-project
-description: One-command full dev toolkit — knowledge graph + frontend QA + site optimizer. Installs everything, configures hooks, builds graph, ready to work.
+description: One-command full dev toolkit — knowledge graph + codebase understanding + frontend QA + site optimizer. Installs everything, configures hooks, builds graph, ready to work.
 trigger: /setup-project
 ---
 
 # /setup-project
 
-Install the complete AI development toolkit for the current project in one command. Combines knowledge graph, frontend QA, and site optimization into a single automated setup.
+Install the complete AI development toolkit for the current project in one command. Combines knowledge graph, codebase understanding, frontend QA, and site optimization into a single automated setup.
 
 ## Usage
 
@@ -28,10 +28,11 @@ Print this banner first:
 ============================================================
   CLAUDE DEV TOOLKIT - Full Project Setup
 ============================================================
-  Phase 1: Knowledge Graph (understand the codebase)
-  Phase 2: Site Optimizer (UX audit + product analysis)
-  Phase 3: Frontend QA (closed-loop auto-testing)
-  Phase 4: Integration (hooks + CLAUDE.md + schedule)
+  Phase 1: Knowledge Graph (understand code structure)
+  Phase 2: Codebase Understanding (understand business logic)
+  Phase 3: Site Optimizer (UX audit + product analysis)
+  Phase 4: Frontend QA (closed-loop auto-testing)
+  Phase 5: Integration (hooks + CLAUDE.md + schedule)
 ============================================================
 ```
 
@@ -141,7 +142,42 @@ Print: `[Phase 1 DONE] Knowledge graph: X nodes, Y edges, Z communities`
 
 ---
 
-## PHASE 2: Site Optimizer (UX Audit + Product Analysis)
+## PHASE 2: Codebase Understanding (Understand-Anything)
+
+**Purpose**: Understand business logic, data flows, and how frontend connects to backend.
+
+### 2.1 Install Understand-Anything skills (skip if exists)
+
+Check if `~/.claude/skills/understand/SKILL.md` exists. If not:
+
+```bash
+git clone https://github.com/Lum1104/Understand-Anything.git /tmp/understand-anything-temp
+for skill in understand understand-chat understand-dashboard understand-diff understand-domain understand-explain understand-onboard; do
+  mkdir -p ~/.claude/skills/$skill
+  cp -r /tmp/understand-anything-temp/understand-anything-plugin/skills/$skill/* ~/.claude/skills/$skill/
+done
+rm -rf /tmp/understand-anything-temp
+```
+
+### 2.2 Run initial analysis
+
+After installation, run the understand skill on the current project:
+
+```
+/understand
+```
+
+This produces an interactive knowledge graph showing:
+- Architecture layers (API, Service, Data, UI)
+- Business domains and process flows
+- Component relationships and dependencies
+- Frontend-to-backend data flow connections
+
+Print: `[Phase 2 DONE] Codebase understanding: architecture + business logic mapped`
+
+---
+
+## PHASE 3: Site Optimizer (UX Audit + Product Analysis)
 
 **Purpose**: Enable Claude to browse the site as a real user and think like a PM/boss.
 
@@ -185,7 +221,7 @@ Print: `[Phase 2 DONE] UX audit + 7 PM skills + browser automation installed`
 
 ---
 
-## PHASE 3: Frontend QA (Closed-Loop Auto-Testing)
+## PHASE 4: Frontend QA (Closed-Loop Auto-Testing)
 
 **Purpose**: After code changes, automatically test in real browser, AI validates, auto-fix, re-test.
 
@@ -223,7 +259,7 @@ Print: `[Phase 3 DONE] Frontend QA plugin + Playwright browser installed`
 
 ---
 
-## PHASE 4: Integration
+## PHASE 5: Integration
 
 **Purpose**: Wire everything together with hooks, MCP, and CLAUDE.md.
 
@@ -351,17 +387,21 @@ Phase 1 - Knowledge Graph:
   [OK] Git hooks: post-commit + post-checkout auto-rebuild
   [OK] Daily scheduled rebuild at ~9:17 AM
 
-Phase 2 - Site Optimizer:
+Phase 2 - Codebase Understanding:
+  [OK] understand-anything (7 skills)
+  [OK] Architecture + business logic mapped
+
+Phase 3 - Site Optimizer:
   [OK] ux-audit (4 depth levels)
   [OK] 7 PM skills (journey map, prioritization, strategy...)
   [OK] playwright-skill (model-invoked browser automation)
 
-Phase 3 - Frontend QA:
+Phase 4 - Frontend QA:
   [OK] frontend-dev plugin (8 AI sub-agents)
   [OK] Playwright Chromium browser
   [OK] PostToolUse hook (auto-test on file change)
 
-Phase 4 - Integration:
+Phase 5 - Integration:
   [OK] Playwright MCP server → .mcp.json
   [OK] PreToolUse hook → consult graph before search
   [OK] PostToolUse hook → auto-test frontend changes
@@ -372,18 +412,24 @@ Phase 4 - Integration:
 ============================================================
 
   UNDERSTAND THE CODEBASE:
-    Just ask about architecture — I'll consult the knowledge graph first.
+    /understand                    Full codebase analysis (architecture + business logic)
+    /understand-domain             Extract business domains and flows
+    /understand-chat [question]    Ask questions about the codebase
+    /understand-explain [path]     Deep-dive into specific file
+    /understand-diff               Analyze what changed and impact
+    /understand-dashboard          Open interactive explorer
 
   UX AUDIT (user perspective):
-    "ux audit"                     Standard walkthrough
-    "ux audit thorough"            Overnight deep audit
-    "dogfood this"                 Same as ux audit
+    "ux audit [url]"               Standard walkthrough
+    "ux audit [url] thorough"      Overnight deep audit
+    "ux audit [url] exhaustive"    Every element on every page
     "qa sweep"                     Test all pages systematically
 
   PRODUCT ANALYSIS (boss perspective):
-    "map the customer journey"     User flow + drop-off points
-    "what should we fix first?"    Prioritized action plan
-    "product strategy session"     Full strategy workshop
+    "customer-journey-map"         User flow + drop-off points
+    "prioritization-advisor"       What to fix first
+    "product-strategy-session"     Full strategy workshop
+    "jobs-to-be-done"              What users hire the product for
 
   DEVELOP & AUTO-TEST:
     Just write code normally. Frontend changes auto-trigger:

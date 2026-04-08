@@ -14,25 +14,31 @@ That's it. Everything else is automatic.
 /setup-project
     |
     v
-Phase 1: Knowledge Graph ──── Understand the codebase
+Phase 1: Knowledge Graph ──── Understand code structure
     |                          - AST extraction (191+ node types)
     |                          - Community detection
     |                          - God nodes & architecture map
     |                          - Auto-rebuild on git commit
     v
-Phase 2: Site Optimizer ────── UX audit + product analysis
+Phase 2: Codebase Understanding  Understand business logic
+    |                          - Architecture layers (API, Service, Data, UI)
+    |                          - Business domains & process flows
+    |                          - Frontend-to-backend data flows
+    |                          - Interactive dashboard explorer
+    v
+Phase 3: Site Optimizer ────── UX audit + product analysis
     |                          - Browse site as real user
     |                          - 4 depth levels (5min → 8hrs)
     |                          - 7 PM skills (journey, priority, strategy)
     |                          - "Would I come back?" evaluation
     v
-Phase 3: Frontend QA ───────── Closed-loop auto-testing
+Phase 4: Frontend QA ───────── Closed-loop auto-testing
     |                          - 8 AI sub-agents
     |                          - Auto-trigger on file change
     |                          - AI validates screenshots
     |                          - Auto-fix → re-test (up to 5x)
     v
-Phase 4: Integration ───────── Wire everything together
+Phase 5: Integration ───────── Wire everything together
                                - Playwright MCP server
                                - PreToolUse hook (consult graph)
                                - PostToolUse hook (auto-test)
